@@ -235,6 +235,18 @@ The resulting system was intended to generalize better to novel scaffolds by com
 
 After the grand ensemble established a stable rank ordering of compounds, the final predictions were re-scaled to address distributional compression. Because the ensemble combined many partially correlated model families, the averaged predictions became overly conservative, with the final output distribution narrower than the observed pEC50 distribution in the training data. To correct this, the final ensemble predictions were blended toward a distribution calibrated from the original training labels, increasing the spread while preserving the rank structure learned by the ensemble. This post-processing step was intended to recover realistic dynamic range after rank order had already been established, so highly ranked compounds were allowed to move higher and low-ranked compounds lower without making large molecule-specific manual adjustments.
 
+### Model Blend Proportions
+
+Approximate model weighting.
+pEC50 trained TorchMD - 20%
+pEC50 trained Unimol - 20%
+Activation 8-e5 concentraion trained Chemprop D-MPNN Embeddings - 18%
+Activation 8-e5 concentraion trained AttnFP Embeddings - 18%
+pEC50 trained AttnFP Embeddings fused with descriptor/fingerprints - 10%
+pEC50 trained Chemprop D-MPNN Embeddings - 10%
+Activation 3-e6 concentraion trained AttnFP Embeddings - 2%
+pEC50 ECFP4/6 XGBoost - 1%
+
 ## Summary
 
 This project implemented a broad molecular prediction stack for PXR pEC50 modeling. The approach moved beyond a single GNN or fingerprint model and instead used a multi-representation ensemble incorporating Chemprop, DeepChem AttentionFP, Uni-Mol, TorchMD, RDKit descriptors, ECFP PCA features, Mol2Vec, nearest-neighbor features, and conformer geometry.
