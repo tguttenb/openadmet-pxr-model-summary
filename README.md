@@ -200,19 +200,16 @@ The over/underprediction classifier modeled when the full ensemble was likely to
 ## Final Modeling Approach
 
 Approximate Model Weighting
-pEC50 trained TorchMD - 20%
-pEC50 trained Unimol - 20%
-Activation 8-e5 concentraion trained Chemprop D-MPNN Embeddings - 18%
-Activation 8-e5 concentraion trained AttnFP Embeddings - 18%
-pEC50 trained AttnFP Embeddings fused with descriptor/fingerprints - 12%
-pEC50 trained TabPFN - 5%
-pEC50 trained LGBM - 4%
-Activation 3-e6 concentraion trained AttnFP Embeddings - 2%
+pEC50 trained TorchMD - 20%,
+pEC50 trained Unimol - 20%,
+Activation 8-e5 concentraion trained Chemprop D-MPNN Embeddings - 18%,
+Activation 8-e5 concentraion trained AttnFP Embeddings - 18%,
+pEC50 trained AttnFP Embeddings fused with descriptor/fingerprints - 12%,
+pEC50 trained TabPFN - 5%,
+pEC50 trained LGBM - 4%,
+Activation 3-e6 concentraion trained AttnFP Embeddings - 2%,
 pEC50 ECFP4/6 XGBoost - 1%
 
-The core design principle was representation diversity. Instead of assuming that any single architecture could fully model PXR activity, the pipeline combined graph learning, 3D molecular modeling, auxiliary assay embedding transfer, cheminformatics descriptors, nearest-neighbor SAR features, and systematic residual correction.
-
-The resulting system was intended to generalize better to novel scaffolds by combining multiple partially independent views of molecular activity and by explicitly modeling cases where the ensemble was likely to be directionally biased.
 
 ### Final Ensemble Distribution Re-Scaling
 
